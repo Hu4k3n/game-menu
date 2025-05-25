@@ -1,8 +1,12 @@
 import React from 'react';
 
-function MainMenu() {    const onPlay = () => {
+import { useNavigate } from 'react-router-dom';
+
+function MainMenu() {
+    const navigate = useNavigate();
+    const onPlay = () => {
         console.log("Play button clicked");
-        window.location.href = '/game';
+        navigate('/game');
     };
     const onOptions = () => {
         console.log("Options button clicked");
