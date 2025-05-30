@@ -4,6 +4,8 @@ import GameUI from '../GameUI';
 import GodotCanvasAndStatus from './GodotCanvasAndStatus';
 import './GodotGame.css';
 import BackButton from '../../Button/BackButton';
+import BackgroundVideo from '../../MainMenu/BackgroundVideo'; 
+import gameBgArt from '../../../assets/bg/bgArt.mp4'; 
 
 // This component renders the Godot game canvas and status overlays, then runs the Godot loader
 function GodotGame() {
@@ -50,13 +52,16 @@ function GodotGame() {
 
     // The Godot loader expects these elements to exist in the DOM
     return (
-    <>
-        <BackButton />
-        <div className="godot-game-root">
-            <GodotCanvasAndStatus />
-            <GameUI />
-        </div>
-    </>
+        <>
+            <div className="godot-game-background">
+            <BackgroundVideo videoPath={gameBgArt} />
+            </div>
+            <BackButton />
+            <div className="godot-game-root">
+                <GodotCanvasAndStatus />
+                <GameUI />
+            </div>
+        </>
     );
 }
 

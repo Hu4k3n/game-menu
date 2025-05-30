@@ -4,15 +4,15 @@ import './GameButton.css';
 const getSymbol = (icon) => {
     switch (icon) {
         case 'up':
-            return '↑';
+            return '▲';
         case 'down':
-            return '↓';
+            return '▼';
         case 'left':
-            return '←';
+            return '◄';
         case 'right':
-            return '→';
+            return '►';
         case 'action':
-            return 'F';
+            return '█';
         default:
             return null;
     }

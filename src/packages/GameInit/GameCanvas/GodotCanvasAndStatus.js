@@ -1,10 +1,31 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import './GodotGame.css';
 // Renders the Godot canvas and status overlay elements
-export default function GodotCanvasAndStatus() {
+function GodotCanvasAndStatus() {
+    const canvasRef = useRef(null);
+
+    useEffect(() => {
+        if (canvasRef.current) {
+            canvasRef.current.focus();
+        }
+    }, []);
+
+    const handleBlur = () => {
+        if (canvasRef.current) {
+            canvasRef.current.focus();
+        }
+    };
+
     return (
         <>
-            <canvas className="godot-canvas-wrapper" id="canvas" style={{ display: 'block', width: '100vw', height: '100vh', background: 'black' }}>
+            <canvas
+                className="godot-canvas-wrapper"
+                id="canvas"
+                ref={canvasRef}
+                tabIndex={0}
+                onBlur={handleBlur}
+                style={{ display: 'block', width: '100vw', height: '100vh', background: 'black' }}
+            >
                 Your browser does not support the canvas tag.
             </canvas>
             <div id="status" style={{
@@ -20,7 +41,8 @@ export default function GodotCanvasAndStatus() {
                     padding: '1rem', textAlign: 'center', zIndex: 1, display: 'none'
                 }}></div>
             </div>
-            
         </>
     );
 }
+
+export default GodotCanvasAndStatus;

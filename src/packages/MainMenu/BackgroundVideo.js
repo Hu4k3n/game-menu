@@ -1,9 +1,11 @@
+
 import React from 'react';
 
-const BackgroundVideo = () => (
+
+const BackgroundVideo = ({ videoPath }) => (
     <video
         className="main-menu-bg-video"
-        src={require('../../assets/bg/bgArt.mp4')}
+        src={videoPath}
         autoPlay
         loop
         muted

@@ -15,16 +15,18 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      {isLoading ? (
-        <LoadingPage />
-      ) : (
-        <Routes>
-          <Route path="/" element={<MainMenu />} />
-          <Route path="/game" element={<GodotGame />} />
-        </Routes>
-      )}
-    </Router>
+    <>
+      <Router>
+        {isLoading ? (
+          <LoadingPage />
+        ) : (
+          <Routes>
+            <Route path="/" element={<MainMenu />} />
+            <Route path="/game" element={<GodotGame />} />
+          </Routes>
+        )}
+      </Router>
+    </>
   );
 }
 
