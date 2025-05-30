@@ -1,6 +1,8 @@
 import React from 'react';
-
+import './MainMenu.css';
+import BackgroundVideo from './BackgroundVideo';
 import { useNavigate } from 'react-router-dom';
+
 
 function MainMenu() {
     const navigate = useNavigate();
@@ -18,40 +20,18 @@ function MainMenu() {
     };
 
     return (
-        <div style={styles.container}>
-            <h1 style={styles.title}>Game Menu</h1>
-            <button style={styles.button} onClick={onPlay}>Play</button>
-            <button style={styles.button} onClick={onOptions}>Options</button>
-            <button style={styles.button} onClick={onExit}>Exit</button>
+        <div className="main-menu-background-wrapper">
+            <BackgroundVideo />
+            <div className="main-menu-container">
+                <h1 className="main-menu-title">Game Menu</h1>
+                <button className="main-menu-button" onClick={onPlay}>Play</button>
+                <button className="main-menu-button" onClick={onOptions}>Resume</button>
+                <button className="main-menu-button" onClick={onExit}>About</button>
+                <button className="main-menu-button" onClick={onExit}>Exit</button>
+            </div>
         </div>
     );
 }
 
-const styles = {
-    container: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100vh',
-        background: '#222',
-    },
-    title: {
-        color: '#fff',
-        marginBottom: '2rem',
-    },
-    button: {
-        width: '200px',
-        padding: '1rem',
-        margin: '0.5rem',
-        fontSize: '1.2rem',
-        borderRadius: '8px',
-        border: 'none',
-        cursor: 'pointer',
-        background: '#444',
-        color: '#fff',
-        transition: 'background 0.2s',
-    }
-};
 
 export default MainMenu;

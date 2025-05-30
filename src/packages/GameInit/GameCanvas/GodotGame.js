@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import GameUI from '../GameUI';
 import GodotCanvasAndStatus from './GodotCanvasAndStatus';
 import './GodotGame.css';
+import BackButton from '../../Button/BackButton';
 
 // This component renders the Godot game canvas and status overlays, then runs the Godot loader
 function GodotGame() {
@@ -49,10 +50,13 @@ function GodotGame() {
 
     // The Godot loader expects these elements to exist in the DOM
     return (
+    <>
+        <BackButton />
         <div className="godot-game-root">
             <GodotCanvasAndStatus />
             <GameUI />
         </div>
+    </>
     );
 }
 
