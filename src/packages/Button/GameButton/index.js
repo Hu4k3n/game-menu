@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './GameButton.css';
 
 const getSymbol = (icon) => {
     switch (icon) {
@@ -22,17 +22,7 @@ const GameButton = ({ onClick, children, size = 60, style = {}, icon, ...props }
     const buttonStyle = {
         width: size,
         height: size,
-        borderRadius: '50%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        border: 'none',
-        background: '#3498db',
-        color: '#fff',
-        cursor: 'pointer',
         fontSize: size / 2.5,
-        boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-        transition: 'background 0.2s',
         ...style,
     };
 
@@ -80,6 +70,7 @@ const GameButton = ({ onClick, children, size = 60, style = {}, icon, ...props }
     return (
         <button
             type="button"
+            className="game-button"
             onPointerDown={handlePointerDown}
             onPointerUp={handlePointerUp}
             onPointerLeave={handlePointerUp}

@@ -1,5 +1,6 @@
 import React from 'react';
 import './MainMenu.css';
+import UIButton from '../Button/UIButton';
 import BackgroundVideo from './BackgroundVideo';
 import { useNavigate } from 'react-router-dom';
 
@@ -23,11 +24,9 @@ function MainMenu() {
         <div className="main-menu-background-wrapper">
             <BackgroundVideo />
             <div className="main-menu-container">
-                <h1 className="main-menu-title">Game Menu</h1>
-                <button className="main-menu-button" onClick={onPlay}>Play</button>
-                <button className="main-menu-button" onClick={onOptions}>Resume</button>
-                <button className="main-menu-button" onClick={onExit}>About</button>
-                <button className="main-menu-button" onClick={onExit}>Exit</button>
+                <UIButton onClick={onPlay}>Play</UIButton>
+                <UIButton onClick={onOptions}>See my Resume</UIButton>
+                <UIButton onClick={onExit}>About</UIButton>
             </div>
         </div>
     );
