@@ -1,5 +1,6 @@
 
 import React, { useEffect } from 'react';
+import GameUI from '../GameUI';
 
 // This component renders the Godot game canvas and status overlays, then runs the Godot loader
 function GodotGame() {
@@ -63,6 +64,7 @@ function GodotGame() {
                     padding: '1rem', textAlign: 'center', zIndex: 1, display: 'none'
                 }}></div>
             </div>
+            <GameUI />
         </>
     );
 }
