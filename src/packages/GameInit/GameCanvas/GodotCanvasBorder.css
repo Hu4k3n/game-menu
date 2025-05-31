@@ -1,9 +1,12 @@
 .godot-canvas-wrapper {
-  display: block;
-  width: 100vw;
-  height: 100vh;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-width: 900px; /* Optional: set a max size */
+  max-height: 700px; /* Optional: set a max size */
   background: red;
   box-shadow: 0 0 0 6px #1860cb, 0 0 24px 6px #1860cb; /* Mario-like glow */
   border-radius: 18px;
   box-sizing: border-box;
+  margin: auto; /* Center if parent uses flex/grid */
 }

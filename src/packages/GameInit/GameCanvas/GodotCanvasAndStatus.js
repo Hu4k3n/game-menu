@@ -1,6 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import './GodotGame.css';
 import './GodotCanvasBorder.css';
+import BackgroundVideo from '../../MainMenu/BackgroundVideo';
+import bgArtVideo from '../../../assets/bg/bgArt.mp4';
 // Renders the Godot canvas and status overlay elements
 function GodotCanvasAndStatus() {
     const canvasRef = useRef(null);
@@ -33,7 +35,6 @@ function GodotCanvasAndStatus() {
                 display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center',
                 visibility: 'hidden', position: 'absolute', left: 0, right: 0, top: 0, bottom: 0
             }}>
-                <img id="status-splash" className="show-image--true fullsize--true use-filter--true" src="/index.png" alt="" style={{ maxHeight: '100%', maxWidth: '100%', margin: 'auto' }} />
                 <progress id="status-progress" style={{ bottom: '10%', width: '50%', margin: '0 auto', display: 'none' }}></progress>
                 <div id="status-notice" style={{
                     backgroundColor: '#5b3943', borderRadius: '0.5rem', border: '1px solid #9b3943', color: '#e0e0e0',
