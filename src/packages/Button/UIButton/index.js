@@ -1,5 +1,6 @@
 import React from 'react';
 import '../GameButton/index.js';
+import './UIButton.css';
 
 function UIButton({ children, className = '', onClick, ...props }) {
     return (

@@ -4,3 +4,11 @@
   left: 16px;
   z-index: 1000;
 }
+
+.main-menu-title {
+  color: #fff;
+  margin-bottom: 2rem;
+  font-family: 'Press Start 2P', cursive, monospace;
+  image-rendering: pixelated;
+  letter-spacing: 2px;
+}

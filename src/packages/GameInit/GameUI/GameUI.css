@@ -6,35 +6,35 @@
   margin: 0 auto;
 }
 
-.game-button-up {
+.up {
   position: absolute;
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
 }
 
-.game-button-down {
+.down {
   position: absolute;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
 }
 
-.game-button-left {
+.left {
   position: absolute;
   top: 50%;
   left: 20px;
   transform: translateY(-50%);
 }
 
-.game-button-right {
+.right {
   position: absolute;
   top: 50%;
   right: 20px;
   transform: translateY(-50%);
 }
 
-.game-button-action {
+.action {
   position: absolute;
   top: 50%;
   left: 50%;

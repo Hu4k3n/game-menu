@@ -18,14 +18,8 @@ const getSymbol = (icon) => {
     }
 };
 
-const GameButton = ({ onClick, children, size = 60, style = {}, icon, ...props }) => {
-    const buttonStyle = {
-        width: size,
-        height: size,
-        fontSize: size / 2.5,
-        ...style,
-    };
 
+const GameButton = ({ onClick, children, size = 60, icon, ...props }) => {
     const symbol = icon ? getSymbol(icon) : null;
 
     // Map icon to keyboard event key
@@ -68,17 +62,18 @@ const GameButton = ({ onClick, children, size = 60, style = {}, icon, ...props }
     };
 
     return (
-        <button
+        <div className="game-button-container">    
+            <button
             type="button"
             className="game-button"
             onPointerDown={handlePointerDown}
             onPointerUp={handlePointerUp}
             onPointerLeave={handlePointerUp}
-            style={buttonStyle}
             {...props}
-        >
-            {symbol || children}
-        </button>
+            >
+                {symbol || children}
+            </button>
+        </div>
     );
 };
 

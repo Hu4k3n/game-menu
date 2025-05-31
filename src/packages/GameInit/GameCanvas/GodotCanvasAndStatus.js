@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import './GodotGame.css';
+import './GodotCanvasBorder.css';
 // Renders the Godot canvas and status overlay elements
 function GodotCanvasAndStatus() {
     const canvasRef = useRef(null);
@@ -24,7 +25,6 @@ function GodotCanvasAndStatus() {
                 ref={canvasRef}
                 tabIndex={0}
                 onBlur={handleBlur}
-                style={{ display: 'block', width: '100vw', height: '100vh', background: 'black' }}
             >
                 Your browser does not support the canvas tag.
             </canvas>

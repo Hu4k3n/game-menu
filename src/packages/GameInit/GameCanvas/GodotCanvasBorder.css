@@ -1,0 +1,9 @@
+.godot-canvas-wrapper {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background: red;
+  box-shadow: 0 0 0 6px #1860cb, 0 0 24px 6px #1860cb; /* Mario-like glow */
+  border-radius: 18px;
+  box-sizing: border-box;
+}
