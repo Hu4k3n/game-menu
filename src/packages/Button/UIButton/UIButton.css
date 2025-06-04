@@ -1,16 +1,16 @@
-/* Styles for main menu buttons, moved from MainMenu.css */
 .main-menu-button {
-  width: 220px;
-  padding: 1.2rem;
-  margin: 0.5rem;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  background: #444;
-  color: #fff;
-  transition: background 0.2s;
-  font-family: 'Press Start 2P', cursive, monospace;
-  image-rendering: pixelated;
-  letter-spacing: 1px;
+    color: #fff;
+    background-color: #1860cb;
+    padding: 15px 40px 15px 40px;
+    margin: 10px;
+    font-size: 14px;
+    font-family: "Press Start 2P", system-ui;
+    border: 0;
+    box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff36;
+    cursor: pointer;
+}
+
+.main-menu-button:active {
+    transform: translateY(5px);
+    box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, inset 0px 5px #00000038;
 }

@@ -6,37 +6,43 @@
   margin: 0 auto;
 }
 
+
 .up {
   position: absolute;
-  top: 20px;
+  top: 15%;
   left: 50%;
-  transform: translateX(-50%);
+  /* Use CSS variable for transform */
+  --game-ui-transform: translateX(-50%);
 }
+
 
 .down {
   position: absolute;
-  bottom: 20px;
+  bottom: 10%;
   left: 50%;
-  transform: translateX(-50%);
+  --game-ui-transform: translateX(-50%);
 }
+
 
 .left {
   position: absolute;
   top: 50%;
   left: 20px;
-  transform: translateY(-50%);
+  --game-ui-transform: translateY(-50%);
 }
+
 
 .right {
   position: absolute;
   top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
+  right: 0%;
+  --game-ui-transform: translateY(-50%);
 }
+
 
 .action {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  --game-ui-transform: translate(-50%, -50%);
 }

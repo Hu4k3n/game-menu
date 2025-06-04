@@ -1,23 +1,27 @@
 .game-button {
-    border: none;
+    color: #fff;
+    background-color: #1860cb;
+    padding: 15px 40px 15px 40px;
+    margin: 10px;
+    font-size: 14px;
+    font-family: "Press Start 2P", system-ui;
+    border: 0;
+    box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff36;
+    cursor: pointer;
     border-radius: 25%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #1450a3;
-    color: #bf55bc;
-    cursor: pointer;
-    box-shadow: 0 0 0 6px #bf55bc, 0 0 24px 6px #1860cb; /* Mario-like glow */
     transition: all 0.25s cubic-bezier(.4,0,.2,1);
     width: 60px;
     height: 60px;
-    font-size: 60px/2.5;
+    /* Use a CSS variable for transform offset */
+    --button-press-offset: 0px;
+    /* Compose transform from parent and offset */
+    transform: var(--game-ui-transform, none) translateY(var(--button-press-offset));
 }
 
 .game-button:active {
-    box-shadow: 0 0 0 6px #bf55bc, 0 0 0 2px #3a3d40,
-      0 0 0 4px rgba(0, 0, 0, 0.25), 0 4px 12px -5px rgba(0, 0, 0, 0.53),
-      0 6px 6px -4px rgba(0, 0, 0, 0.35);
-    background: #1450a3;
-    transition: all 0.25s cubic-bezier(.4,0,.2,1);
+    --button-press-offset: 5px;
+    box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black,inset 0px 5px #00000038;
 }
