@@ -10,7 +10,7 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 100);
     return () => clearTimeout(timer);
   }, []);
 
@@ -21,8 +21,10 @@ function App() {
           <LoadingPage />
         ) : (
           <Routes>
-            <Route path="/" element={<MainMenu />} />
-            <Route path="/game" element={<GodotGame />} />
+            <Route path="/" element={
+              <MainMenu />} />
+            <Route path="/game" element={
+              <GodotGame />} />
           </Routes>
         )}
       </Router>

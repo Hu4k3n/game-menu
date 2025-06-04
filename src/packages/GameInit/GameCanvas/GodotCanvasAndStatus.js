@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import './GodotGame.css';
 import './GodotCanvasBorder.css';
 import './GodotCanvasAndStatus.css';
+import HowToPlay from '../HowToPlay/howToPlay';
 // Renders the Godot canvas and status overlay elements
 function GodotCanvasAndStatus() {
     const canvasRef = useRef(null);
@@ -30,6 +31,7 @@ function GodotCanvasAndStatus() {
                 Your browser does not support the canvas tag.
             </canvas>
             <div id="status">
+                <HowToPlay />
                 <progress id="status-progress"></progress>
                 <div id="status-notice"></div>
             </div>
