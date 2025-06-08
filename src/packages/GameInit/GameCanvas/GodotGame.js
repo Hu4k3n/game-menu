@@ -8,7 +8,7 @@ import BackgroundVideo from '../../MainMenu/BackgroundVideo';
 import gameBgArt from '../../../assets/bg/bgArt.mp4'; 
 
 // This component renders the Godot game canvas and status overlays, then runs the Godot loader
-function GodotGame() {
+function GodotGame(props) {
     
     useEffect(() => {
         // Dynamically load the Godot engine script if not already loaded
@@ -60,7 +60,11 @@ function GodotGame() {
                     posterPath={require('../../../assets/bg/bgArtPoster.png')}
                 />
             </div>
-            <BackButton />
+            <BackButton 
+                onPlay={props.onPlay}
+                onPause={props.onPause}
+                bgAudioObject={props.bgAudioObject}
+            />
             <div className="godot-game-root">
                 <GodotCanvasAndStatus />
                 <GameUI />

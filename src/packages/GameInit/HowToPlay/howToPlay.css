@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 .how-to-play-root {
-    /* min-height: 100vh;
+    min-height: 100vh;
     display: flex;
-    align-items: center; */
+    align-items: center;
     justify-content: center;
 }
 
