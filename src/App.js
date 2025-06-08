@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import bgm from './assets/sound/bgm.mp3';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LoadingPage from './packages/LoadingPage';
+import StartPage from './packages/StartPage';
 import MainMenu from './packages/MainMenu';
 import GodotGame from './packages/GameInit/GameCanvas/GodotGame';
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isStartPage, setIsStartPage] = useState(true);
   const [bgAudioObject, setBgAudioObject] = useState(null);
 
   function playAudio() {
@@ -30,22 +30,14 @@ function App() {
     }
     setBgAudioObject(null);
   }
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 100);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <>
       <Router>
-        {isLoading ? (
-          <LoadingPage />
-        ) : (
           <Routes>
             <Route path="/" element={
+              <StartPage 
+              />} />
+            <Route path="/main" element={
               <MainMenu 
                 onPlay={playAudio} 
                 onPause={pauseAudio}
@@ -58,7 +50,6 @@ function App() {
                 bgAudioObject={bgAudioObject}
               />} />
           </Routes>
-        )}
       </Router>
     </>
   );

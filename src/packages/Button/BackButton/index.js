@@ -9,7 +9,7 @@ const BackButton = (props) => {
     const [musicOn, setMusicOn] = React.useState(!!props.bgAudioObject);
 
     const handleBack = () => {
-        navigate('/');
+        navigate('/main');
     };
 
     const onMusic = () => {
