@@ -12,11 +12,13 @@ function MainMenu(props) {
 
     const onPlay = () => {
         console.log("Play button clicked");
+        setTimeout(() => {
+            props.onPlay && props.onPlay();
+        },3000)
         navigate('/game');
     };
-    const onOptions = () => {
+    const onResume = () => {
         console.log("Options button clicked");
-        // Add logic to open options menu
     };
     const onMusic = () => {
         if (musicOn) {
@@ -26,9 +28,8 @@ function MainMenu(props) {
         }
         setMusicOn(!musicOn);
     };
-    const onExit = () => {
-        console.log("Exit button clicked");
-        // Add logic to exit the game
+    const onAbout = () => {
+        navigate('/')
     };
 
     React.useEffect(() => {
@@ -41,9 +42,9 @@ function MainMenu(props) {
             <div className="main-menu-container">
                 <h1 className="main-menu-title">Game Menu</h1>
                 <UIButton onClick={onPlay}>Play</UIButton>
-                <UIButton onClick={onOptions}>See my Resume</UIButton>
+                <UIButton onClick={onResume}>See my Resume</UIButton>
                 <UIButton onClick={onMusic}>{musicOn ? 'Music: On' : 'Music: Off'}</UIButton>
-                <UIButton onClick={onExit}>About</UIButton>
+                <UIButton onClick={onAbout}>About Me</UIButton>
             </div>
         </div>
     );
