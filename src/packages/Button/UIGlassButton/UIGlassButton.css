@@ -1,0 +1,94 @@
+.ui-glass-button {
+    display: inline-flex;
+    width: fit-content;
+    max-width: 100%;
+    padding: 0;
+    margin: 10px;
+    border: 0;
+    border-radius: 999px;
+    background: none;
+    font-family: var(--portfolio-font, "Space Grotesk", -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif);
+    font-size: 17px;
+    font-weight: 590;
+    line-height: 22px;
+    letter-spacing: -0.022em;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    transition: transform 250ms cubic-bezier(0.32, 0.72, 0, 1),
+        opacity 250ms cubic-bezier(0.32, 0.72, 0, 1);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.ui-glass-button .glass-ui-container {
+    position: relative;
+}
+
+/* One shared spectral edge ties the CTA and social controls to the profile card. */
+.ui-glass-button .glass-ui-container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    padding: 1px;
+    border-radius: inherit;
+    background: var(--portfolio-outline-gradient,
+        linear-gradient(135deg, #67e8f9 0%, #8b5cf6 55%, #ec4899 100%));
+    opacity: 0.78;
+    pointer-events: none;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    transition: opacity 180ms ease, filter 180ms ease;
+}
+
+.ui-glass-button:hover .glass-ui-container::after {
+    opacity: 1;
+    filter: drop-shadow(0 0 5px rgba(139, 92, 246, 0.48));
+}
+
+/* 590 is an SF-only weight; keep fallbacks at semibold instead of rounding to bold */
+@supports not (font-variation-settings: "wght" 590) {
+    .ui-glass-button {
+        font-weight: 600;
+    }
+}
+
+.ui-glass-button:active:not(:disabled) {
+    transform: scale(0.96);
+    opacity: 0.8;
+    transition-duration: 100ms;
+}
+
+.ui-glass-button:focus-visible {
+    outline: 2px solid #a5b4fc;
+    outline-offset: 4px;
+}
+
+.ui-glass-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.ui-glass-button .glass-ui-button-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: auto;
+    height: auto;
+    white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ui-glass-button,
+    .ui-glass-button:active:not(:disabled) {
+        transform: none;
+        transition: none;
+    }
+}

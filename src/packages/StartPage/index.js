@@ -10,6 +10,7 @@ import { onResume, openLink } from '../utils/utils';
 import { contentArray, ProfileCardInfo } from '../utils/constant';
 import { AudioContext } from '../../context/AudioContext';
 import Socials from '../Socials';
+import UIGlassButton from '../Button/UIGlassButton';
 
 function StartPage() {
     const navigate = useNavigate();
@@ -82,9 +83,9 @@ function StartPage() {
                 {renderProfileCard()}
                 {scrollBox(10)}
                 <h1 className="main-menu-title">Hello there!</h1>
+                <UIGlassButton onClick={onResume}>See my Resume</UIGlassButton>
                 {scrollBox(5)}
-                <UIButton onClick={onResume}>See my Resume</UIButton>
-                <Socials />
+                <Socials glass />
                 {startPageContent(contentArray)}
                 <h4 className="main-menu-title">Explore my portfolio through an island</h4>
                 <UIButton onClick={goToGame}>Explore</UIButton>
