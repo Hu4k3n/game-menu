@@ -1,0 +1,350 @@
+.ask-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    width: 100%;
+    margin: 10px 0;
+    font-family: var(--portfolio-font, "Space Grotesk", -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* The library sets user-select: none on every glass container, but answers are meant to be copied. */
+.ask-bar .ask-bar-card,
+.ask-bar .ask-bar-card-content {
+    user-select: text;
+}
+
+/* Keeps the growing panel clipped to the capsule's rounded corners. */
+.ask-bar .ask-bar-card-content {
+    overflow: hidden;
+}
+
+/* The same spectral edge as the glass buttons and profile card. */
+.ask-bar .ask-bar-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    padding: 1px;
+    border-radius: inherit;
+    background: var(--portfolio-outline-gradient,
+        linear-gradient(135deg, #67e8f9 0%, #8b5cf6 55%, #ec4899 100%));
+    opacity: 0.78;
+    pointer-events: none;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    transition: opacity 180ms ease, filter 180ms ease;
+}
+
+.ask-bar .ask-bar-card:focus-within::after,
+.ask-bar .ask-bar-card:hover::after {
+    opacity: 1;
+    filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.48));
+}
+
+.ask-bar-form {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 14px 13px 20px;
+}
+
+.ask-bar-search-icon {
+    flex: none;
+    width: 19px;
+    height: 19px;
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.ask-bar-input {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    outline: none;
+    color: #fff;
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.022em;
+}
+
+.ask-bar-input::placeholder {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.ask-bar-clear,
+.ask-bar-submit {
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 200ms cubic-bezier(0.32, 0.72, 0, 1),
+        opacity 200ms ease, background-color 200ms ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.ask-bar-clear {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 18px;
+    line-height: 1;
+}
+
+.ask-bar-clear:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.ask-bar-submit {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--portfolio-outline-gradient,
+        linear-gradient(135deg, #67e8f9 0%, #8b5cf6 55%, #ec4899 100%));
+    box-shadow: 0 2px 12px rgba(124, 92, 255, 0.35);
+}
+
+.ask-bar-submit svg {
+    width: 20px;
+    height: 20px;
+}
+
+.ask-bar-submit:hover:not(:disabled) {
+    transform: scale(1.06);
+}
+
+.ask-bar-submit:active:not(:disabled) {
+    transform: scale(0.94);
+}
+
+.ask-bar-submit:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.ask-bar-clear:focus-visible,
+.ask-bar-submit:focus-visible,
+.ask-bar-chip:focus-visible,
+.ask-bar-retry:focus-visible {
+    outline: 2px solid #a5b4fc;
+    outline-offset: 3px;
+}
+
+/* Height is driven from JS off a ResizeObserver measurement of .ask-bar-panel-inner. */
+.ask-bar-panel {
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: height 420ms cubic-bezier(0.32, 0.72, 0, 1), opacity 260ms ease;
+}
+
+.ask-bar-panel.is-open {
+    opacity: 1;
+}
+
+.ask-bar-panel-inner {
+    padding: 4px 22px 20px;
+}
+
+.ask-bar-question {
+    margin: 0 0 12px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+.ask-bar-body {
+    margin: 0;
+}
+
+.ask-bar-answer {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 15.5px;
+    line-height: 1.65;
+    letter-spacing: -0.012em;
+    text-align: left;
+    /* LLM replies carry their own paragraph breaks, and long tokens must not overflow the capsule. */
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.ask-bar-thinking {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 15px;
+}
+
+.ask-bar-dots {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 3px;
+    margin-left: 4px;
+}
+
+.ask-bar-dots span {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: ask-bar-pulse 1.2s ease-in-out infinite;
+}
+
+.ask-bar-dots span:nth-child(2) {
+    animation-delay: 0.16s;
+}
+
+.ask-bar-dots span:nth-child(3) {
+    animation-delay: 0.32s;
+}
+
+@keyframes ask-bar-pulse {
+    0%, 60%, 100% {
+        opacity: 0.25;
+        transform: translateY(0);
+    }
+    30% {
+        opacity: 1;
+        transform: translateY(-3px);
+    }
+}
+
+.ask-bar-error {
+    margin: 0;
+    color: #fca5a5;
+    font-size: 15px;
+    line-height: 1.55;
+    text-align: left;
+}
+
+.ask-bar-disclaimer {
+    margin: 14px 0 0;
+    color: rgba(255, 255, 255, 0.38);
+    font-size: 11.5px;
+    letter-spacing: 0.01em;
+}
+
+.ask-bar-retry {
+    margin-top: 12px;
+    padding: 7px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.85);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color 200ms ease, color 200ms ease;
+}
+
+.ask-bar-retry:hover {
+    border-color: rgba(165, 180, 252, 0.6);
+    color: #fff;
+}
+
+.ask-bar-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.ask-bar-chip {
+    padding: 7px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.72);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    transition: transform 200ms cubic-bezier(0.32, 0.72, 0, 1),
+        border-color 200ms ease, color 200ms ease, background-color 200ms ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.ask-bar-chip:hover:not(:disabled) {
+    transform: translateY(-1px);
+    border-color: rgba(165, 180, 252, 0.55);
+    background: rgba(255, 255, 255, 0.09);
+    color: #fff;
+}
+
+.ask-bar-chip:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.ask-bar-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@media (max-width: 768px) {
+    .ask-bar-form {
+        gap: 10px;
+        padding: 11px 12px 11px 16px;
+    }
+
+    .ask-bar-panel-inner {
+        padding: 4px 18px 18px;
+    }
+
+    .ask-bar-answer {
+        font-size: 15px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ask-bar-panel,
+    .ask-bar-chip,
+    .ask-bar-clear,
+    .ask-bar-submit {
+        transition: none;
+    }
+
+    .ask-bar-chip:hover:not(:disabled),
+    .ask-bar-submit:hover:not(:disabled),
+    .ask-bar-submit:active:not(:disabled) {
+        transform: none;
+    }
+
+    .ask-bar-dots span {
+        animation: none;
+        opacity: 0.6;
+    }
+}
