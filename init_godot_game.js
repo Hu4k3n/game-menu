@@ -2,35 +2,7 @@
 // It exposes a function `init_godot_game()` that can be called from React to start the game.
 
 function init_godot_game() {
-  // Get base path from the current script location or document base
-  // This works because the script is loaded from the PUBLIC_URL
-  const scriptPath = document.currentScript ? document.currentScript.src : document.scripts[document.scripts.length - 1].src;
-  const scriptUrl = new URL(scriptPath);
-  let basePath = scriptUrl.pathname.substring(0, scriptUrl.pathname.lastIndexOf('/') + 1);
-  
-  // Fallback: try to detect from the main JS bundle path
-  if (basePath === '/') {
-    const mainScript = Array.from(document.scripts).find(s => s.src.includes('/static/js/main'));
-    if (mainScript) {
-      const mainUrl = new URL(mainScript.src);
-      basePath = mainUrl.pathname.split('/static/')[0] + '/';
-    }
-  }
-
-  const GODOT_CONFIG = {
-    "args":[],
-    "canvasResizePolicy":1,
-    "ensureCrossOriginIsolationHeaders":true,
-    "executable":"index",
-    "experimentalVK":false,
-    "fileSizes":{"index.pck":96177152,"index.wasm":52106500},
-    "focusCanvas":true,
-    "gdextensionLibs":[],
-    // Add the locateFile function to tell Godot where to find its files
-    "locateFile": function(file) {
-      return basePath + file;
-    }
-  };
+  const GODOT_CONFIG = {"args":[],"canvasResizePolicy":1,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":96177152,"index.wasm":52106500},"focusCanvas":true,"gdextensionLibs":[]};
   const GODOT_THREADS_ENABLED = false;
   const engine = new window.Engine(GODOT_CONFIG);
 
